@@ -12,8 +12,11 @@ class MainController
 
     public function execute()
     {
-        $data["completedTasks"] = 0;
-        echo $this->render->render("view/inicio.php",$data);
+
+        $url = "https://jsonplaceholder.typicode.com/posts";
+
+        $this->mainModel->actualizarBaseDeDatos($url);
+        echo $this->render->render("view/inicio.php");
     }
 
 }
