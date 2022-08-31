@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbbc3e03-c7e4-44de-b9a9-858c9d0d6704" name="Changes" comment="modifi home">
-      <change afterPath="$PROJECT_DIR$/controller/FiltroController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/filtro.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/BDDJsonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/BDDJsonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/MainModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/MainModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/inicio.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/inicio.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661868396848</updated>
       <workItem from="1661868398721" duration="12653000" />
-      <workItem from="1661947729666" duration="12195000" />
+      <workItem from="1661947729666" duration="14290000" />
     </task>
     <servers />
   </component>

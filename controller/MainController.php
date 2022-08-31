@@ -22,21 +22,20 @@ class MainController
         }
 
 
-
-
         if (isset($_GET["actualizarBaseDeDatos"])) {
 
             $data["cargaExitosa"] = $this->mainModel->actualizarBaseDeDatos($url);
         }
 
-
         $existeBaseDeDatos = $this->mainModel->obtenerInformacionBDD();
 
-        if (isset($existeBaseDeDatos)){
+        if (count($existeBaseDeDatos) > 0){
             $data["tablaDatos"] = $existeBaseDeDatos;
             $data["cargaExitosa"] = true;
+        } else {
+            $data["cargaExitosa"] = false;
         }
-
+        
         echo $this->render->render("view/inicio.php",$data);
     }
 

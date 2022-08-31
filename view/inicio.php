@@ -13,16 +13,17 @@
     <div class="padding">
 
         <div class="row mb-4">
+
+            {{#cargaExitosa}}
+            <button class="btn btn-dark " data-toggle="modal" data-target="#exampleModal">Actualizar Base De Datos</button>
+
+            <a href="/BDDJson" class="btn btn-dark ">Obtener base de datos (JSON)</a>
+            <a href="/filtro" class="btn btn-dark ">Filtrar</a>
+            {{/cargaExitosa}}
+
             {{^cargaExitosa}}
             <a href="/?cargarBaseDeDatos=true" class="btn btn-dark ">Cargar Base De Datos</a>
             {{/cargaExitosa}}
-
-            {{#cargaExitosa}}
-
-            <button class="btn btn-dark " data-toggle="modal" data-target="#exampleModal">Actualizar Base De Datos</button>
-            {{/cargaExitosa}}
-
-            <a href="/BDDJson" class="btn btn-dark ">Obtener base de datos (JSON)</a>
 
             <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
