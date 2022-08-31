@@ -14,8 +14,6 @@ class MainController
     {
         $url = "https://jsonplaceholder.typicode.com/posts";
 
-
-
         if (isset($_GET["cargarBaseDeDatos"])) {
 
             $data["cargaExitosa"] = $this->mainModel->cargarBaseDeDatos($url);
