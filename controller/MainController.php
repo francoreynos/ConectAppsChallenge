@@ -12,11 +12,18 @@ class MainController
 
     public function execute()
     {
-
         $url = "https://jsonplaceholder.typicode.com/posts";
 
-        $this->mainModel->actualizarBaseDeDatos($url);
-        echo $this->render->render("view/inicio.php");
+        if (isset($_GET["actualizarBaseDeDatos"])){
+
+            $actualizacionExitosa = $this->mainModel->actualizarBaseDeDatos($url);
+        }
+
+        $data["actualizacionExitosa"] = $actualizacionExitosa;
+
+        $basededatos = $this->mainModel->obtenerInformacionBDD();
+        echo $this->render->render("view/inicio.php",$data);
     }
+
 
 }

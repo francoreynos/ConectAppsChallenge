@@ -10,29 +10,33 @@ class MainModel
         $this->database = $database;
     }
 
-    public function actualizarBaseDeDatos($url){
-
-        $url = "https://jsonplaceholder.typicode.com/posts";
+    public function actualizarBaseDeDatos($url)
+    {
 
         $informacionJson = file_get_contents($url);
 
         $datosJson = json_decode($informacionJson, true);
 
-        foreach ( $datosJson as $data){
+        if (is_array($datosJson)) {
+            foreach ($datosJson as $value) {
 
-            $sql = "INSERT INTO post (userId, id, title, body)
-                VALUES (" . $data["userId"] . ", " . $data["id"] . ", " . $data["title"] . ", " . $data["body"] . ")";
-            $this->database->query($sql);
+                $userId = $value["userId"];
+                $id = $value["id"];
+                $title = $value["title"];
+                $body = $value["body"];
+
+                $sql = "INSERT INTO post (userId, id, title, body)
+                VALUES (" . $userId . ", " . $id . ", '" . $title . "', '" . $body . "')";
+
+                $this->database->query($sql);
+            }
+            return true;
+        } else {
+            return false;
         }
-
-        return true;
     }
 
-    public function addTask($name){
-
-    }
-
-    public function getAllCompletedTasks(){
+    public function obtenerInformacionBDD(){
         $sql = 'SELECT * FROM to_do WHERE status = 1 and active = 1';
 
         $table = $this->database->query($sql);
