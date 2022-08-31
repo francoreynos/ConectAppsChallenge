@@ -14,14 +14,29 @@ class MainController
     {
         $url = "https://jsonplaceholder.typicode.com/posts";
 
-        if (isset($_GET["actualizarBaseDeDatos"])){
 
-            $actualizacionExitosa = $this->mainModel->actualizarBaseDeDatos($url);
+
+        if (isset($_GET["cargarBaseDeDatos"])) {
+
+            $data["cargaExitosa"] = $this->mainModel->cargarBaseDeDatos($url);
         }
 
-        $data["actualizacionExitosa"] = $actualizacionExitosa;
 
-        $basededatos = $this->mainModel->obtenerInformacionBDD();
+
+
+        if (isset($_GET["actualizarBaseDeDatos"])) {
+
+            $data["cargaExitosa"] = $this->mainModel->actualizarBaseDeDatos($url);
+        }
+
+
+        $existeBaseDeDatos = $this->mainModel->obtenerInformacionBDD();
+
+        if (isset($existeBaseDeDatos)){
+            $data["tablaDatos"] = $existeBaseDeDatos;
+            $data["cargaExitosa"] = true;
+        }
+
         echo $this->render->render("view/inicio.php",$data);
     }
 

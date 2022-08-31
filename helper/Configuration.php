@@ -4,6 +4,7 @@ include_once("helper/Render.php");
 include_once("helper/UrlHelper.php");
 
 include_once("controller/MainController.php");
+include_once("controller/BDDJsonController.php");
 
 include_once("model/MainModel.php");
 
@@ -49,7 +50,13 @@ class Configuration
     public function getMainController()
     {
         $mainModel = $this->getMainModel();
-        return new MainController($this->getRender(),$mainModel);
+        return new MainController($this->getRender(), $mainModel);
+    }
+
+    public function getBDDJsonController()
+    {
+        $mainModel = $this->getMainModel();
+        return new BDDJsonController($this->getRender(), $mainModel);
     }
 
     public function getMainModel()

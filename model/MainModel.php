@@ -10,7 +10,7 @@ class MainModel
         $this->database = $database;
     }
 
-    public function actualizarBaseDeDatos($url)
+    public function cargarBaseDeDatos($url)
     {
 
         $informacionJson = file_get_contents($url);
@@ -36,8 +36,36 @@ class MainModel
         }
     }
 
+    public function actualizarBaseDeDatos($url){
+
+        $informacionJson = file_get_contents($url);
+
+        $datosJson = json_decode($informacionJson, true);
+
+        if (is_array($datosJson)) {
+            foreach ($datosJson as $value) {
+
+                $userId = $value["userId"];
+                $id = $value["id"];
+                $title = $value["title"];
+                $body = $value["body"];
+
+                $sql = "UPDATE post 
+                SET userId = " . $userId . ", id = " . $id . ", title = '" . $title . "', body = '" . $body . "'
+                where id = " . $id;
+
+                $this->database->query($sql);
+            }
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public function obtenerInformacionBDD(){
-        $sql = 'SELECT * FROM to_do WHERE status = 1 and active = 1';
+
+        $sql = 'SELECT * FROM post';
 
         $table = $this->database->query($sql);
         $datos = array();

@@ -13,7 +13,37 @@
     <div class="padding">
 
         <div class="row mb-4">
-            <a href="/?actualizarBaseDeDatos=true" class="btn btn-dark ">Actualizar Base De Datos</a>
+            {{^cargaExitosa}}
+            <a href="/?cargarBaseDeDatos=true" class="btn btn-dark ">Cargar Base De Datos</a>
+            {{/cargaExitosa}}
+
+            {{#cargaExitosa}}
+
+            <button class="btn btn-dark " data-toggle="modal" data-target="#exampleModal">Actualizar Base De Datos</button>
+            {{/cargaExitosa}}
+
+            <a href="/BDDJson" class="btn btn-dark ">Obtener base de datos (JSON)</a>
+
+            <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Al apretar esta opcion se resetearan todos los campos de la base de datos. <br>
+                            Estas seguro?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">no</button>
+                            <a href="/?actualizarBaseDeDatos=true" class="btn btn-primary">si</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="row">
             <div class="col-sm-12">
@@ -21,36 +51,21 @@
                 <div class="container-fluid d-flex justify-content-center">
                     <div class="list list-row card" id="sortable" data-sortable-id="0" aria-dropeffect="move">
 
+                        {{#tablaDatos}}
                         <div class="list-item" data-id="13" data-item-sortable-id="0" draggable="true" role="option" aria-grabbed="false" style="">
 
-                            <div><a href="#" data-abc="true"><span class="w-40 avatar gd-primary">P</span></a></div>
+                            <div><a href="#" data-abc="true"><span class="w-40 avatar gd-primary">{{id}}</span></a></div>
 
                             <div class="flex">
-                                <a href="#" class="item-author text-color" data-abc="true">Patrick Linod</a>
-                                <div class="item-except text-muted text-sm h-1x">For what reason would it be advisable for me to think about business content?</div>
+                                <a href="#" class="item-author text-color font-weight-bold" data-abc="true">{{title}}</a>
+                                <div class="item-except text-muted text-sm h-1x">{{body}}</div>
                             </div>
 
                             <div class="no-wrap">
-                                <div class="item-date text-muted text-sm d-none d-md-block">3 weeks ago</div>
-                            </div>
-
-                            <div>
-                                <div class="item-action dropdown">
-                                    <a href="#" data-toggle="dropdown" class="text-muted" data-abc="true">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                            <circle cx="12" cy="12" r="1"></circle>
-                                            <circle cx="12" cy="5" r="1"></circle>
-                                            <circle cx="12" cy="19" r="1"></circle>
-                                        </svg>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right bg-black" role="menu">
-                                        <a class="dropdown-item" href="#" data-abc="true">See detail </a><a class="dropdown-item download" data-abc="true">Download </a><a class="dropdown-item edit" data-abc="true">Edit</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item trash" data-abc="true">Delete item</a>
-                                    </div>
-                                </div>
+                                <div class="item-date text-muted text-sm d-none d-md-block">{{userId}}</div>
                             </div>
                         </div>
+                        {{/tablaDatos}}
                     </div>
                 </div>
             </div>
