@@ -36,7 +36,8 @@ class MainModel
         }
     }
 
-    public function actualizarBaseDeDatos($url){
+    public function actualizarBaseDeDatos($url)
+    {
 
         $informacionJson = file_get_contents($url);
 
@@ -63,7 +64,34 @@ class MainModel
 
     }
 
-    public function obtenerInformacionBDD(){
+    public function obtenerTodosLosId()
+    {
+        $sql = 'SELECT id FROM post';
+
+        $table = $this->database->query($sql);
+        $datos = array();
+        while ($fila = $table->fetch_assoc()) {
+            $datos[] = $fila;
+        }
+        return $datos;
+    }
+
+    public function filtrarPorId($id)
+    {
+
+        $sql = 'SELECT * FROM post WHERE id = ' . $id;
+
+        $table = $this->database->query($sql);
+        $datos = array();
+        while ($fila = $table->fetch_assoc()) {
+            $datos[] = $fila;
+        }
+        return $datos;
+
+    }
+
+    public function obtenerInformacionBDD()
+    {
 
         $sql = 'SELECT * FROM post';
 

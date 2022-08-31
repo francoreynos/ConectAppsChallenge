@@ -5,6 +5,7 @@ include_once("helper/UrlHelper.php");
 
 include_once("controller/MainController.php");
 include_once("controller/BDDJsonController.php");
+include_once("controller/FiltroController.php");
 
 include_once("model/MainModel.php");
 
@@ -57,6 +58,11 @@ class Configuration
     {
         $mainModel = $this->getMainModel();
         return new BDDJsonController($this->getRender(), $mainModel);
+    }
+   public function getFiltroController()
+    {
+        $mainModel = $this->getMainModel();
+        return new FiltroController($this->getRender(), $mainModel);
     }
 
     public function getMainModel()

@@ -13,7 +13,6 @@ class BDDJsonController
 
     public function execute()
     {
-        $url = "https://jsonplaceholder.typicode.com/posts";
 
         $existeBaseDeDatos = $this->mainModel->obtenerInformacionBDD();
 
